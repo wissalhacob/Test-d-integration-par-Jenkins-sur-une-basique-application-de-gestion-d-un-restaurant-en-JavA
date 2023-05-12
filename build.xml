@@ -91,6 +91,26 @@
             <classpath refid="run.Home (1).classpath"/>
         </java>
     </target>
+                <target name="integration-test">
+  <property name="test.dir" value="test/integration"/>
+  <property name="classpath" value="${build.dir}:${lib.dir}/*"/>
+
+  <mkdir dir="${build.dir}/reports"/>
+
+  <junit printsummary="yes" haltonfailure="yes">
+    <classpath>
+      <path location="${classpath}"/>
+      <pathelement location="${test.dir}"/>
+    </classpath>
+    <formatter type="xml"/>
+    <batchtest fork="yes" todir="${build.dir}/reports">
+      <fileset dir="${test.dir}">
+        <include name="**/*Test.java"/>
+      </fileset>
+    </batchtest>
+  </junit>
+</target>
+
     <target name="Home">
         <java classname="Home" failonerror="true" fork="yes">
             <classpath refid="run.Home.classpath"/>
