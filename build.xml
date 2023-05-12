@@ -88,18 +88,17 @@
         <antcall target="build"/>
     </target>
                 
-<!-- Définition du chemin de classe global -->
-<classpath>
-  <pathelement location="C:\Users\hacob\Downloads\junit-4.13.2-javadoc.jar" />
-  <!-- Ajouter d'autres dépendances si nécessaire -->
-</classpath>
-
 <!-- Définition de la tâche d'intégration de test -->
 <target name="integration-test" depends="compile">
   <mkdir dir="${build.dir}/reports" />
 
   <!-- Définition de la classe de test -->
   <typedef name="testcase" classname="org.junit.runner.JUnitCore">
+    <classpath>
+      <pathelement location="build.xml" />
+      <pathelement location="C:\Users\hacob\Downloads\junit-4.13.2-javadoc.jar" />
+      <!-- Ajouter d'autres dépendances si nécessaire -->
+    </classpath>
   </typedef>
 
   <!-- Exécution des tests -->
@@ -107,7 +106,9 @@
     <formatter type="plain" usefile="false" />
     <formatter type="xml" />
     <classpath>
-      <!-- Retirer ces éléments car la dépendance est déjà chargée dans le chemin de classe global -->
+      <pathelement location="build.xml" />
+      <pathelement location="C:\Users\hacob\Downloads\junit-4.13.2-javadoc.jar" />
+      <!-- Ajouter d'autres dépendances si nécessaire -->
     </classpath>
     <batchtest fork="yes" todir="${build.dir}/reports">
       <fileset dir="${src.dir}">
