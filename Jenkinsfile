@@ -16,7 +16,7 @@ pipeline {
         }
         stage('--test--') {
             steps {
-                bat "ant test" // Pour exécuter les tests unitaires de votre projet Java Swing
+                bat "ant integration-test" // Pour exécuter les tests unitaires de votre projet Java Swing
             }
         }
         stage('--package--') {
