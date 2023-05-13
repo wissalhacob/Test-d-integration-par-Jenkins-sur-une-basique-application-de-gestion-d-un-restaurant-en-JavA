@@ -29,10 +29,12 @@ pipeline {
                 bat "ant install" // Pour construire votre application Java
             }
         }
-        stage('Run') {
-            steps {
-                bat "java -jar C:/Program Files/Java/jdk-11"
-            }
-        }
+ stage('Run') {
+    steps {
+        bat 'java -jar "C:\\Program Files\\Java\\jdk-11\\lib\\jrt-fs.jar"'
+    }
+}
+
+
     }
 }
