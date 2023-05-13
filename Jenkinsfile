@@ -14,26 +14,7 @@ pipeline {
                 bat "ant compile" // Pour compiler votre projet Java Swing
             }
         }
-        stage('--test--') {
-            steps {
-                bat "ant integration-test" // Pour exécuter les tests unitaires de votre projet Java Swing
-            }
-        }
-        stage('--package--') {
-            steps {
-                bat "ant package" // Pour créer un package de votre application Java Swing
-            }
-        }
-        stage('Build') {
-            steps {
-                bat "ant install" // Pour construire votre application Java
-            }
-        }
- stage('Run') {
-    steps {
-        bat "ant run"
-    }
-}
+
 
 
     }
