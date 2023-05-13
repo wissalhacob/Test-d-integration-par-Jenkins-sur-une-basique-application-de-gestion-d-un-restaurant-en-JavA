@@ -89,6 +89,25 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+                <target name="integration-test">
+  <property name="test.dir" value="test/integration"/>
+  <property name="classpath" value="${build.dir}:${lib.dir}/*"/>
+
+  <mkdir dir="${build.dir}/reports"/>
+
+  <junit printsummary="yes" haltonfailure="yes">
+    <classpath>
+      <path location="${classpath}"/>
+      <pathelement location="${test.dir}"/>
+    </classpath>
+    <formatter type="xml"/>
+    <batchtest fork="yes" todir="${build.dir}/reports">
+      <fileset dir="${test.dir}">
+        <include name="**/*Test.java"/>
+      </fileset>
+    </batchtest>
+  </junit>
+</target>
     <target name="Home (1)">
         <java classname="Interface.Home" failonerror="true" fork="yes">
             <classpath refid="run.Home (1).classpath"/>
