@@ -148,6 +148,9 @@
   <jar destfile="${dist.dir}/${ant.project.name}.jar"
     basedir="${build.dir}" />
 </target>
+<target name="install">
+  <!-- Les étapes à exécuter pour l'installation -->
+</target>
 
 
 
