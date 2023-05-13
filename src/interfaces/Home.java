@@ -69,7 +69,7 @@ public class Home {
 		panel_1.setBounds(10, 72, 627, 426);
 		frame.getContentPane().add(panel_1);
 		
-		JButton btn_medecin = new JButton("Medecins");
+		JButton btn_medecin = new JButton("Medecinssss");
 		btn_medecin.setBounds(213, 113, 218, 60);
 		btn_medecin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
