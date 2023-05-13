@@ -10,7 +10,8 @@
     <property name="target" value="17"/>
     <property name="source" value="17"/>
                 <property name="src.dir" value="src"/>
-                <property name="classpath" value="${build.dir}:${lib.dir}/*;${ant.home}/C:\Windows\System32\cmd.exe\junit-4.13.2-javadoc.jar"/>
+<property name="junit.jar" location="${junit.home}/junit.jar"/>
+<property name="classpath" value="${build.dir}:${lib.dir}/*;${junit.jar}"/>
 
     <path id="Clinique.classpath">
         <pathelement location="bin"/>
