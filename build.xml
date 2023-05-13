@@ -144,6 +144,11 @@
     </batchtest>
   </junit>
 </target>
+        <target name="package" depends="build">
+  <jar destfile="${dist.dir}/${ant.project.name}.jar"
+    basedir="${build.dir}" />
+</target>
+
 
 
     <target name="Home (1)">
