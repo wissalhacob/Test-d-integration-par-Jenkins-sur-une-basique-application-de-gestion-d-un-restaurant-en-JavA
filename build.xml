@@ -151,7 +151,7 @@
 <target name="install">
   <!-- Les étapes à exécuter pour l'installation -->
 </target>
-
+java -jar "C:/Programmes /Java/jdk-11/lib/jrt-fs.jar"
 
 
     <target name="Home (1)">
