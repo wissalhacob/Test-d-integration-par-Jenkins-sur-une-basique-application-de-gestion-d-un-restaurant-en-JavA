@@ -28,7 +28,7 @@
     </path>
              
                 <target name="run" depends="compile">
-  <java classname="HHome">
+  <java classname="Home">
     <classpath>
       <pathelement location="${build.dir}"/>
     </classpath>
