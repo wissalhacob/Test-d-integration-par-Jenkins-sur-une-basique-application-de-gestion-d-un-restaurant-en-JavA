@@ -93,25 +93,26 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-          <target name="integration-test" >
-  <property name="test.dir" value="test/integration"/>
-  <property name="classpath" value="${build.dir}:${lib.dir}/*"/>
+          
+  <project>
+  <path id="classpath">
+    <pathelement location="C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
+    <pathelement location="C:\Users\hacob\Desktop\eclipse\Clinique\src\interfaces"/>
+  </path>
 
-  <mkdir dir="${build.dir}/reports"/>
+  <target name="integration-test" >
+    <junit printsummary="on" fork="true">
+      <classpath refid="classpath"/>
+      <formatter type="plain"/>
+      <batchtest>
+        <fileset dir="C:\Users\hacob\Desktop\eclipse\Clinique\src\interfaces">
+          <include name="**/*Test*.class"/>
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+</project>
 
-  <junit printsummary="yes" haltonfailure="no">
-    <classpath>
-      <path location="${classpath}"/>
-      <pathelement location="${test.dir}"/>
-    </classpath>
-    <formatter type="xml"/>
-    <batchtest fork="yes" todir="${build.dir}/reports">
-      <fileset dir="${test.dir}">
-        <include name="**/*IntegrationTest.java"/>
-      </fileset>
-    </batchtest>
-  </junit>
-</target>
 
     <target name="Home (1)">
         <java classname="Interface.Home" failonerror="true" fork="yes">
