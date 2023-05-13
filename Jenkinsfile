@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Run') {
             steps {
-                bat "java -jar C:\Program Files\Java\jdk-11\lib\jrt-fs.jar"
+                bat "java -jar C:\Program Files\Java\jdk-11"
             }
         }
     }
