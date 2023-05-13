@@ -9,45 +9,50 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="17"/>
     <property name="source" value="17"/>
+                <property name="src.dir" value="src"/>
+                <property name="classpath" value="${build.dir}:${lib.dir}/*;C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
+
     <path id="Clinique.classpath">
         <pathelement location="bin"/>
         <pathelement location="../../../Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
-        <pathelement location="../../../Downloads/junit-4.13.2-javadoc.jar"/>
+        <pathelement location="C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
+
+      
     </path>
     <path id="run.Home (1).classpath">
         <path refid="Clinique.classpath"/>
         <pathelement location="../../../Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
-        <pathelement location="../../../Downloads/junit-4.13.2-javadoc.jar"/>
+  <pathelement location="C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
     </path>
     <path id="run.Home (2).classpath">
         <path refid="Clinique.classpath"/>
         <pathelement location="../../../Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
-        <pathelement location="../../../Downloads/junit-4.13.2-javadoc.jar"/>
+  <pathelement location="C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
     </path>
     <path id="run.Home.classpath">
         <path refid="Clinique.classpath"/>
         <pathelement location="../../../Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
-        <pathelement location="../../../Downloads/junit-4.13.2-javadoc.jar"/>
+  <pathelement location="C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
     </path>
     <path id="run.Medecins (1).classpath">
         <path refid="Clinique.classpath"/>
         <pathelement location="../../../Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
-        <pathelement location="../../../Downloads/junit-4.13.2-javadoc.jar"/>
+  <pathelement location="C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
     </path>
     <path id="run.Medecins.classpath">
         <path refid="Clinique.classpath"/>
         <pathelement location="../../../Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
-        <pathelement location="../../../Downloads/junit-4.13.2-javadoc.jar"/>
+  <pathelement location="C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
     </path>
     <path id="run.Patient (1).classpath">
         <path refid="Clinique.classpath"/>
         <pathelement location="../../../Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
-        <pathelement location="../../../Downloads/junit-4.13.2-javadoc.jar"/>
+  <pathelement location="C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
     </path>
     <path id="run.Patient.classpath">
         <path refid="Clinique.classpath"/>
         <pathelement location="../../../Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
-        <pathelement location="../../../Downloads/junit-4.13.2-javadoc.jar"/>
+  <pathelement location="C:\Program Files\apache-ant-1.9.16-bin\apache-ant-1.9.16\lib\junit-4.13.2-javadoc.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -80,10 +85,36 @@
             <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
         </unzip>
     </target>
+                  <target name="compile" description="Compile the source code">
+    <mkdir dir="${build.dir}" />
+    <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false" />
+</target>
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+          
+ <target name="integration-test">
+  <property name="test.dir" value="test/integration"/>
+  <property name="classpath" value="${build.dir}:${lib.dir}/*"/>
+
+  <mkdir dir="${build.dir}/reports"/>
+
+  <junit printsummary="yes" haltonfailure="yes">
+    <classpath>
+      <path location="${classpath}"/>
+      <pathelement location="${test.dir}"/>
+    </classpath>
+    <formatter type="xml"/>
+    <batchtest fork="yes" todir="${build.dir}/reports">
+      <fileset dir="${test.dir}">
+        <include name="**/*Test.java"/>
+      </fileset>
+    </batchtest>
+  </junit>
+</target>
+
+
     <target name="Home (1)">
         <java classname="Interface.Home" failonerror="true" fork="yes">
             <classpath refid="run.Home (1).classpath"/>
