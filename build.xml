@@ -126,7 +126,6 @@
     </target>
           
  <target name="integration-test">
-  <property name="test.dir" value="test/integration"/>
   <property name="classpath" value="${build.dir}:${lib.dir}/*"/>
 
   <mkdir dir="${build.dir}/reports"/>
