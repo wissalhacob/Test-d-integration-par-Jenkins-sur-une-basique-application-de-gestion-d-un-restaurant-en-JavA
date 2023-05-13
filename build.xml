@@ -26,7 +26,15 @@
 
       
     </path>
-                
+             
+                <target name="run" depends="compile">
+  <java classname="HHome">
+    <classpath>
+      <pathelement location="${build.dir}"/>
+    </classpath>
+  </java>
+</target>
+
     <path id="run.Home (1).classpath">
         <path refid="Clinique.classpath"/>
         <pathelement location="../../../Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
